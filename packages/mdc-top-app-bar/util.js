@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 Google Inc. All Rights Reserved.
+ * Copyright 2016 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-/** @enum {string} */
-const strings = {
-  NAVIGATION_EVENT: 'MDCTopAppBar:nav',
-  TITLE_SELECTOR: '.mdc-top-app-bar__title',
-  MENU_ICON_SELECTOR: '.mdc-top-app-bar__menu-icon',
-  ACTION_ICON_SELECTOR: '.mdc-top-app-bar__icon',
-};
+let supportsPassive_;
 
-/** @enum {string} */
-const cssClasses = {
-  SHORT_CLASS: 'mdc-top-app-bar--short',
-  RIGHT_ICON_CLASS: 'mdc-top-app-bar--short__right-icon',
-  SHORT_CLOSED_CLASS: 'mdc-top-app-bar--short-closed',
-};
+// Determine whether the current browser supports passive event listeners, and if so, use them.
+export function applyPassive(globalObj = window, forceRefresh = false) {
+  if (supportsPassive_ === undefined || forceRefresh) {
+    let isSupported = false;
+    try {
+      globalObj.document.addEventListener('test', null, {get passive() {
+        isSupported = true;
+      }});
+    } catch (e) { }
 
-export {strings, cssClasses};
+    supportsPassive_ = isSupported;
+  }
+
+  return supportsPassive_ ? {passive: true} : false;
+}

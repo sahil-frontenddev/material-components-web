@@ -20,6 +20,9 @@ import MDCTopAppBarFoundation from './foundation';
 import MDCComponent from '@material/base/component';
 import {MDCRipple} from '@material/ripple/index';
 import {strings} from './constants';
+import * as util from './util';
+
+export {util};
 
 /**
  * @extends {MDCComponent<!MDCTopAppBarFoundation>}
@@ -53,6 +56,7 @@ class MDCTopAppBar extends MDCComponent {
 
   destroy() {
     this.iconRipples_.forEach((iconRipple) => iconRipple.destroy());
+    super.destroy();
   }
 
   /**
@@ -85,6 +89,10 @@ class MDCTopAppBar extends MDCComponent {
         notifyNavigationIconClicked: () => {
           this.emit(strings.NAVIGATION_EVENT, {});
         },
+        registerScrollHandler: (handler) => window.addEventListener('scroll', handler, util.applyPassive()),
+        deregisterScrollHandler: (handler) => window.removeEventListener('scroll', handler),
+        getViewportScrollY: () => window.pageYOffset,
+        totalActionIcons: () => this.root_.querySelectorAll(strings.ACTION_ICON_SELECTOR).length,
       })
       )
     );
