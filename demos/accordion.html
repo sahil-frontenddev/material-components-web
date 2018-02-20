@@ -37,11 +37,11 @@
         </header>
     
         <main class="mdc-toolbar-fixed-adjust">
-    <section class="mdc-accordion">
-      <div class="mdc-accordion__title">
+    <section class="mdcx-accordion">
+      <div class="mdcx-accordion__title">
           MDC Accordion
       </div>
-      <div class="mdc-accordion__body--active">
+      <div class="mdcx-accordion__body--active">
         <ul class="mdc-list">
          
           <div class="mdc-list-item">
@@ -59,11 +59,11 @@
         </ul>
       </div>
     </section>
-    <section class="mdc-accordion">
-        <div class="mdc-accordion__title">
+    <section class="mdcx-accordion">
+        <div class="mdcx-accordion__title">
             MDC Accordion
         </div>
-        <div class="mdc-accordion__body--active mdc-accordion__body">
+        <div class="mdcx-accordion__body--active mdcx-accordion__body">
           <ul class="mdc-list">
            
             <div class="mdc-list-item">
@@ -81,11 +81,11 @@
           </ul>
         </div>
       </section>
-      <section class="mdc-accordion">
-          <div class="mdc-accordion__title">
+      <section class="mdcx-accordion">
+          <div class="mdcx-accordion__title">
               MDC Accordion
           </div>
-          <div class="mdc-accordion__body--active mdc-accordion__body">
+          <div class="mdcx-accordion__body--active mdcx-accordion__body">
             <ul class="mdc-list">
              
               <div class="mdc-list-item">
@@ -117,17 +117,17 @@
       var hasClass = function ( target, className ) {
         return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
     }
-      var acc = document.getElementsByClassName("mdc-accordion__title");
+      var acc = document.getElementsByClassName("mdcx-accordion__title");
       var i;
       
       for (i = 0; i < acc.length; i++) {
           acc[i].addEventListener("click", function() {
               
               var panel = this.nextElementSibling;
-              if (panel.className == "mdc-accordion__body--active" ) {
-                  panel.className = "mdc-accordion__body--active mdc-accordion__body";
-              } else if (panel.className == "mdc-accordion__body--active mdc-accordion__body" ){
-                panel.className = "mdc-accordion__body--active";
+              if (panel.className == "mdcx-accordion__body--active" ) {
+                  panel.className = "mdcx-accordion__body--active mdcx-accordion__body";
+              } else if (panel.className == "mdcx-accordion__body--active mdcx-accordion__body" ){
+                panel.className = "mdcx-accordion__body--active";
               }
           });
       }

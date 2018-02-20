@@ -1,25 +1,2 @@
-$background-accordion: #eeeeee; 
-$color-secondary: #bdbdbd;
-
-.mdc-accordion {
-
-  &__title {
-    background-color: $background-accordion;
-    border-bottom: 1px solid $color-secondary;
-    cursor: pointer;
-    display: flex;
-    line-height: 1.5;
-    padding: 1rem;
-  }&__body{
-    border-bottom: 1px solid $color-secondary;
-    box-sizing: border-box;
-    display: none;
-    height: auto;
-    padding: 2rem;
-    transition: height 2s ease 2s;
-  }&--active  {
-    display: block;
-    background-color: #ccc;
-    
-  }
- }
+@import "./common";
+@import "../packages/mdcx-accordion/mdcx-accordion";
