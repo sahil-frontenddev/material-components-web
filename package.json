@@ -154,7 +154,8 @@
           "typography",
           "demos",
           "infrastructure",
-          "package"
+          "package",
+          "mdcx-chip"
         ],
         "validate": true
       }
